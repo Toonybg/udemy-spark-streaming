@@ -10,7 +10,7 @@ object dfOperations extends App {
 
   // Create a DataFrame from Spark Session read csv
   // Technically known as class Dataset
-  val df = spark.read.option("header","true").option("inferSchema","true").csv("resources/Spark DataFrames/CitiGroup2006_2008")
+  val df = spark.read.option("header","true").option("inferSchema","true").csv("resources/datasets/CitiGroup2006_2008")
 
   // Show Schema
   df.printSchema()
