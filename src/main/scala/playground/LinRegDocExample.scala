@@ -1,12 +1,13 @@
+import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.sql.SparkSession
 
-def main(): Unit = {
-  // Create Session App
-  val spark = SparkSession.builder().appName("LinearRegressionExample").getOrCreate()
+object LinRegDocExample extends App {
 
-  // May need to replace with full file path starting with file:///.
-  val path = "sample_linear_regression_data.txt"
+  Logger.getLogger("org").setLevel(Level.WARN)
+  val spark = SparkSession.builder().appName("LinearRegressionExample").config("spark.master", "local").getOrCreate()
+
+  val path = "resources/datasets/sample_linear_regression_data.txt"
 
   // Training Data
   val training = spark.read.format("libsvm").load(path)
@@ -29,7 +30,6 @@ def main(): Unit = {
   println(s"RMSE: ${trainingSummary.rootMeanSquaredError}")
   println(s"r2: ${trainingSummary.r2}")
 
-  // $example off$
   spark.stop()
 }
-main()
+
