@@ -1,0 +1,9 @@
+target/
+.DS_store
+project/
+.idea
+resources/.DS_Store
+
+resources/Machine_Learning_Sections/
+resources/Scala-and-Spark-Bootcamp-master 2/
+resources/Spark DataFrames/
